@@ -1,0 +1,26 @@
+scalar Date
+type Query {
+  getEvents: [Event]
+  event(id: ID!): Event
+}
+
+type Mutation {
+  createEvent(createEventInput: CreateEventInput): Event
+}
+
+type Subscription {
+  eventCreated: Event
+}
+
+type Event {
+  id: String
+  eventName: String
+  place: String
+  time : Date
+}
+
+input CreateEventInput {
+  eventName: String
+  place: String
+  time : Date
+}

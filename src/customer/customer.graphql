@@ -1,0 +1,35 @@
+scalar Date
+type Query {
+  getCustomers: [Customer]
+  customer(id: ID!): Customer
+}
+
+type Mutation {
+  createCustomer(createCustomerInput: CreateCustomerInput): Customer
+}
+
+type Subscription {
+  customerCreated: Customer
+}
+
+type Customer {
+  
+    id: String
+    name: String
+    phone: Int
+    birthday: Date
+    adress: String 
+    eventname: String
+    checkinTime: Date
+    code: String
+}
+
+input CreateCustomerInput {
+    name: String
+    phone: Int
+    birthday: Date
+    adress: String 
+    eventname: String
+    checkinTime: Date
+    code: String
+}

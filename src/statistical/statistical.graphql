@@ -1,0 +1,30 @@
+scalar Date
+type Query {
+  getStatisticals: [Statistical]
+  statistical(id: ID!): Statistical
+}
+
+type Mutation {
+  createStatistical(createStatisticalInput: CreateStatisticalInput): Statistical
+}
+
+type Subscription {
+  StatisticalCreated: Statistical
+}
+
+type Statistical {
+  id: Int
+  eventName: String
+  cost: Int
+  numberOfParticipants: Int
+  revenue: Int
+  note: Date
+}
+
+input CreateStatisticalInput {
+  eventName: String
+  cost: Int
+  numberOfParticipants: Int
+  revenue: Int
+  note: Date
+}
