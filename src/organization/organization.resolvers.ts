@@ -5,8 +5,10 @@ import { Organization } from '../graphql.schema';
 import { OrganizationService } from './organization.service';
 import { CreateOrganizationDto } from './dto/create-organization.dto';
 import {OrganizationEntity} from "./organization.entity";
+import {GqlAuthGuard} from "../auth/gqlAuth";
 const pubSub = new PubSub();
 
+@UseGuards(GqlAuthGuard)
 @Resolver('Organization')
 export class OrganizationResolvers {
   constructor(private readonly organizationService: OrganizationService) {}

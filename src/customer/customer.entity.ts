@@ -1,16 +1,16 @@
-import { Column, Entity, PrimaryColumn } from 'typeorm';
+import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()
 export class CustomerEntity {
    
-    @PrimaryColumn()
+    @PrimaryGeneratedColumn()
     id: string;
 
     @Column()
     name: string;
 
     @Column()
-    phone: number;
+    phone: string;
 
     @Column()
     birthday: Date;
@@ -19,7 +19,7 @@ export class CustomerEntity {
     adress: string;
 
     @Column()
-    eventname: string;
+    eventName: string;
 
     @Column()
     checkinTime: Date;

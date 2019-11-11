@@ -6,5 +6,5 @@ export class CreateStatisticalDto extends CreateStatisticalInput {
     cost: number;
     numberOfParticipants: number;
     revenue: number;
-    note: Date;
+    note: string;
 }

@@ -1,8 +1,8 @@
-import { Column, Entity, PrimaryColumn } from 'typeorm';
+import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()
 export class OrganizationEntity {
-    @PrimaryColumn()
+    @PrimaryGeneratedColumn()
     id: string;
 
     @Column()
@@ -10,5 +10,8 @@ export class OrganizationEntity {
 
     @Column()
     place: string;
+
+    @Column()
+    hotline : string;
 
 }

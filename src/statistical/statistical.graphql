@@ -26,5 +26,5 @@ input CreateStatisticalInput {
   cost: Int
   numberOfParticipants: Int
   revenue: Int
-  note: Date
+  note: String
 }

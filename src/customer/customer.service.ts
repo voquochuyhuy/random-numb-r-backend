@@ -10,7 +10,13 @@ export class CustomerService {
   ) { }
 
   async create(dto: CreateCustomerDto): Promise<CustomerEntity> {
-    return await this.customerRepository.save(dto);
+    console.log(dto,"dto");
+    try{
+      return await this.customerRepository.save(dto);
+    }
+    catch(error){
+      console.log(error)
+    }
   }
 
   async findAll(): Promise<CustomerEntity[]> {

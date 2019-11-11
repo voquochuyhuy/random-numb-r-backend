@@ -5,5 +5,5 @@ export class CreateOrganizationDto extends CreateOrganizationInput {
   
   organizationName : string;
   place : string;
-
+  hotline :string;
 }

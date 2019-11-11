@@ -9,6 +9,8 @@ import { StatisticalModule } from './statistical/statistical.module';
 import { OrganizationModule } from './organization/organization.module';
 import { join } from 'path';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { AuthModule } from './auth/auth.module';
+import { UsersModule } from './users/users.module';
 @Module({
   imports: [
     TypeOrmModule.forRoot({
@@ -27,12 +29,15 @@ import { TypeOrmModule } from '@nestjs/typeorm';
     StatisticalModule,
     OrganizationModule,
     GraphQLModule.forRoot({
+    context: ({ req }) => ({ req }),
     debug: false,
     playground: false,
     typePaths: ['./**/*.graphql'],
     // resolvers: { JSON: GraphQLJSON },
     installSubscriptionHandlers: true,
   }),
+    AuthModule,
+    UsersModule,
 ],
   controllers: [AppController],
   providers: [AppService],

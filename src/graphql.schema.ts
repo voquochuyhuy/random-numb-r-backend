@@ -7,10 +7,10 @@
 /* tslint:disable */
 export class CreateCustomerInput {
     name?: string;
-    phone?: number;
+    phone?: string;
     birthday?: Date;
     adress?: string;
-    eventname?: string;
+    eventName?: string;
     checkinTime?: Date;
     code?: string;
 }
@@ -18,12 +18,15 @@ export class CreateCustomerInput {
 export class CreateEventInput {
     eventName?: string;
     place?: string;
-    time?: Date;
+    organizationName?: string;
+    startTime?: Date;
+    endTime?: Date;
 }
 
 export class CreateOrganizationInput {
-    name?: string;
+    organizationName?: string;
     place?: string;
+    hotline?: string;
 }
 
 export class CreateStatisticalInput {
@@ -31,16 +34,16 @@ export class CreateStatisticalInput {
     cost?: number;
     numberOfParticipants?: number;
     revenue?: number;
-    note?: Date;
+    note?: string;
 }
 
 export class Customer {
     id?: string;
     name?: string;
-    phone?: number;
+    phone?: string;
     birthday?: Date;
     adress?: string;
-    eventname?: string;
+    eventName?: string;
     checkinTime?: Date;
     code?: string;
 }
@@ -48,8 +51,10 @@ export class Customer {
 export class Event {
     id?: string;
     eventName?: string;
+    organizationName?: string;
     place?: string;
-    time?: Date;
+    startTime?: Date;
+    endTime?: Date;
 }
 
 export abstract class IMutation {
@@ -66,6 +71,7 @@ export class Organization {
     id?: number;
     organizationName?: string;
     place?: string;
+    hotline?: string;
 }
 
 export abstract class IQuery {

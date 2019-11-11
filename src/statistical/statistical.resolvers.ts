@@ -4,9 +4,10 @@ import { PubSub } from 'graphql-subscriptions';
 import { Statistical } from '../graphql.schema';
 import { StatisticalService } from './statistical.service';
 import { CreateStatisticalDto } from './dto/create-statistical.dto';
-
+import {GqlAuthGuard} from "../auth/gqlAuth";
 const pubSub = new PubSub();
 
+@UseGuards(GqlAuthGuard)
 @Resolver('Statistical')
 export class StatisticalResolvers {
   constructor(private readonly statisticalService: StatisticalService) {}

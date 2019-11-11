@@ -16,20 +16,20 @@ type Customer {
   
     id: String
     name: String
-    phone: Int
+    phone: String
     birthday: Date
     adress: String 
-    eventname: String
+    eventName: String
     checkinTime: Date
     code: String
 }
 
 input CreateCustomerInput {
     name: String
-    phone: Int
+    phone: String
     birthday: Date
     adress: String 
-    eventname: String
+    eventName: String
     checkinTime: Date
     code: String
 }

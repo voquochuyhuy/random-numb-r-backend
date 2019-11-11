@@ -1,8 +1,8 @@
-import { Column, Entity, PrimaryColumn } from 'typeorm';
+import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()
 export class StatisticalEntity {
-    @PrimaryColumn()
+    @PrimaryGeneratedColumn()
     id: string;
 
     @Column()
@@ -18,5 +18,5 @@ export class StatisticalEntity {
     revenue: number;
 
     @Column()
-    note: Date;
+    note: String;
 }

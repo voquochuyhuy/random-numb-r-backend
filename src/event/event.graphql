@@ -15,12 +15,16 @@ type Subscription {
 type Event {
   id: String
   eventName: String
+  organizationName :String
   place: String
-  time : Date
+  startTime : Date
+  endTime: Date
 }
 
 input CreateEventInput {
   eventName: String
   place: String
-  time : Date
+  organizationName :String
+  startTime : Date
+  endTime: Date
 }

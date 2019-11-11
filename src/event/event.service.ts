@@ -11,8 +11,7 @@ export class EventService {
     @InjectRepository(EventEntity) private readonly eventRepository: Repository<EventEntity>,
   ) { }
 
-  private readonly events: Event[] = [{ id: "1", eventName: '8/3', place: "Gigamall" , time : new Date(2014,1,1,10,56,1)},
-  { id: "2", eventName: '9/3', place: "Gigamall" , time : new Date(2014,1,1,14,56,1) }];
+  
 
   create(event: CreateEventDto){
     this.eventRepository.save(event);

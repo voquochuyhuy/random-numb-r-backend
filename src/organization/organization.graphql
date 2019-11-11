@@ -15,9 +15,11 @@ type Organization {
   id: Int
   organizationName: String
   place: String
+  hotline :String
 }
 
 input CreateOrganizationInput {
-  name: String
+  organizationName: String
   place: String
+  hotline:String
 }
