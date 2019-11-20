@@ -6,6 +6,7 @@ import { CustomerService } from './customer.service';
 import { CreateCustomerDto } from './dto/create-customer.dto';
 import { AuthGuard } from '@nestjs/passport';
 import {GqlAuthGuard} from "../auth/gqlAuth";
+import { CustomerEntity } from './customer.entity';
 const pubSub = new PubSub();
 
 @UseGuards(GqlAuthGuard)
@@ -13,18 +14,23 @@ const pubSub = new PubSub();
 export class CustomerResolvers {
   constructor(private readonly customerService: CustomerService) {}
 
-  @UseGuards(AuthGuard('jwt'))
+ 
   @Query()
   async getCustomers() {
     return await this.customerService.findAll();
   }
-  @UseGuards(AuthGuard('jwt'))
+ 
   @Query('customer')
   async findOneById(
    
     id: string,
   ): Promise<Customer> {
     return await this.customerService.findOneById(id);
+  }
+
+  @Query('getCustomerByEvent')
+  async findByEvent(eventName:string):Promise<CustomerEntity[]>{
+    return  await this.customerService.findByEvent(eventName);
   }
 
   @Mutation('createCustomer')

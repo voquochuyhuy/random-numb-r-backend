@@ -31,4 +31,8 @@ export class CustomerService {
   async findOneById (_id:string):Promise<CustomerEntity>{
     return await this.customerRepository.findOne({id:_id});
   }
+
+  async findByEvent (eventName:string):Promise<CustomerEntity[]>{
+    return await this.customerRepository.find({eventName:eventName});
+  }
 }

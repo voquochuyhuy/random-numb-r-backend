@@ -2,6 +2,7 @@ scalar Date
 type Query {
   getCustomers: [Customer]
   customer(id: ID!): Customer
+  getCustomerByEvent(eventName:String):[Customer]
 }
 
 type Mutation {

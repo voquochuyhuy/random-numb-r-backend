@@ -79,6 +79,8 @@ export abstract class IQuery {
 
     abstract customer(id: string): Customer | Promise<Customer>;
 
+    abstract getCustomerByEvent(eventName?: string): Customer[] | Promise<Customer[]>;
+
     abstract getEvents(): Event[] | Promise<Event[]>;
 
     abstract event(id: string): Event | Promise<Event>;
