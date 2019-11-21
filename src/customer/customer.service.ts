@@ -33,6 +33,7 @@ export class CustomerService {
   }
 
   async findByEvent (eventName:string):Promise<CustomerEntity[]>{
+    
     return await this.customerRepository.find({eventName:eventName});
   }
 }
