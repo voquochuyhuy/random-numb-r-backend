@@ -30,13 +30,13 @@ export class CustomerResolvers {
 
   @Query('getCustomerByEvent')
   async findByEvent(@Args('eventName') eventName:string):Promise<CustomerEntity[]>{
-    console.log(eventName)
+    
     return  await this.customerService.findByEvent(eventName);
   }
 
   @Mutation('createCustomer')
   async create(@Args('createCustomerInput') args: CreateCustomerDto) {
-    console.log(args,"mutation");
+    
     const customerCreated = await this.customerService.create(args);
     pubSub.publish('customerCreated', { customerCreated: customerCreated });
     // return customerCreated;

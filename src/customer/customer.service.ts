@@ -10,7 +10,7 @@ export class CustomerService {
   ) { }
 
   async create(dto: CreateCustomerDto): Promise<CustomerEntity> {
-    console.log(dto,"dto");
+    
     try{
       return await this.customerRepository.save(dto);
     }

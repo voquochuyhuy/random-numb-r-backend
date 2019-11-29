@@ -8,7 +8,7 @@ import {OrganizationEntity} from "./organization.entity";
 import {GqlAuthGuard} from "../auth/gqlAuth";
 const pubSub = new PubSub();
 
-@UseGuards(GqlAuthGuard)
+// @UseGuards(GqlAuthGuard)
 @Resolver('Organization')
 export class OrganizationResolvers {
   constructor(private readonly organizationService: OrganizationService) {}
