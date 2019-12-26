@@ -6,6 +6,8 @@ type Query {
 
 type Mutation {
   createEvent(createEventInput: CreateEventInput): Event
+  updateEvent(updateEventInput: UpdateEventInput) : Event
+  deleteEvent(deleteEventInput : Int) : Event
 }
 
 type Subscription {
@@ -13,7 +15,7 @@ type Subscription {
 }
 
 type Event {
-  id: String
+  id: Int
   eventName: String
   organizationName :String
   place: String
@@ -22,6 +24,15 @@ type Event {
 }
 
 input CreateEventInput {
+  eventName: String
+  place: String
+  organizationName :String
+  startTime : Date
+  endTime: Date
+}
+
+input UpdateEventInput {
+  id: Int
   eventName: String
   place: String
   organizationName :String

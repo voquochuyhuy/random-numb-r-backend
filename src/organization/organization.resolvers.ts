@@ -8,7 +8,7 @@ import {OrganizationEntity} from "./organization.entity";
 import {GqlAuthGuard} from "../auth/gqlAuth";
 const pubSub = new PubSub();
 
-// @UseGuards(GqlAuthGuard)
+@UseGuards(GqlAuthGuard)
 @Resolver('Organization')
 export class OrganizationResolvers {
   constructor(private readonly organizationService: OrganizationService) {}
@@ -21,16 +21,31 @@ export class OrganizationResolvers {
   @Query('organization')
   async findOneById(
     @Args('id', ParseIntPipe)
-    id: string,
+    id: number,
   ): Promise<OrganizationEntity> {
     return await this.organizationService.findOneById(id);
   }
 
   @Mutation('createOrganization')
   async create(@Args('createOrganizationInput') args: CreateOrganizationDto){
+    console.log(args)
     const organizationCreated = await this.organizationService.create(args);
+
     pubSub.publish('organizationCreated', { organizationCreated: organizationCreated });
     return organizationCreated;
+  }
+
+  @Mutation('updateOrganization')
+  async update(@Args('updateOrganizationInput') args){
+    const organizationCreated = await this.organizationService.update(args);
+    
+  }
+
+  @Mutation('deleteOrganization')
+  async delete(@Args('deleteOrganizationInput') args){
+    
+    const organizationCreated = await this.organizationService.delete(args);
+    
   }
 
   @Subscription('organizationCreated')

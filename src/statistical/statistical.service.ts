@@ -3,7 +3,7 @@ import { Statistical } from '../graphql.schema';
 import { StatisticalEntity } from './statistical.entity';
 import { Repository } from 'typeorm';
 import { InjectRepository } from '@nestjs/typeorm';
-import { CreateStatisticalDto } from './dto/create-statistical.dto';
+import { CreateStatisticalDto,UpdateStatisticalDto } from './dto/create-statistical.dto';
 @Injectable()
 export class StatisticalService {
   constructor(
@@ -15,11 +15,20 @@ export class StatisticalService {
     
   }
 
+  update(organization: UpdateStatisticalDto){
+    // console.log(organization)
+    this.organizationRepository.update(organization.id,organization)
+  }
+
+  delete(organizationid){
+    this.organizationRepository.delete(organizationid);
+  }
+
   findAll():Promise<StatisticalEntity[]> {
     return this.organizationRepository.find();
   }
 
-  findOneById(_id: string): Promise<StatisticalEntity> {
+  findOneById(_id: number): Promise<StatisticalEntity> {
     return this.organizationRepository.findOne({id :_id});
   }
 }

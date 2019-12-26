@@ -6,6 +6,8 @@ type Query {
 
 type Mutation {
   createStatistical(createStatisticalInput: CreateStatisticalInput): Statistical
+  updateStatistical(updateStatisticalInput: UpdateStatisticalInput) : Statistical
+  deleteStatistical(deleteStatisticalInput : Int) : Statistical
 }
 
 type Subscription {
@@ -18,10 +20,18 @@ type Statistical {
   cost: Int
   numberOfParticipants: Int
   revenue: Int
-  note: Date
+  note: String
 }
 
 input CreateStatisticalInput {
+  eventName: String
+  cost: Int
+  numberOfParticipants: Int
+  revenue: Int
+  note: String
+}
+input UpdateStatisticalInput {
+  id:Int
   eventName: String
   cost: Int
   numberOfParticipants: Int

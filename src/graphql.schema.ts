@@ -37,6 +37,31 @@ export class CreateStatisticalInput {
     note?: string;
 }
 
+export class UpdateEventInput {
+    id?: number;
+    eventName?: string;
+    place?: string;
+    organizationName?: string;
+    startTime?: Date;
+    endTime?: Date;
+}
+
+export class UpdateOrganizationInput {
+    id?: number;
+    organizationName?: string;
+    place?: string;
+    hotline?: string;
+}
+
+export class UpdateStatisticalInput {
+    id?: number;
+    eventName?: string;
+    cost?: number;
+    numberOfParticipants?: number;
+    revenue?: number;
+    note?: string;
+}
+
 export class Customer {
     id?: string;
     name?: string;
@@ -49,7 +74,7 @@ export class Customer {
 }
 
 export class Event {
-    id?: string;
+    id?: number;
     eventName?: string;
     organizationName?: string;
     place?: string;
@@ -62,9 +87,21 @@ export abstract class IMutation {
 
     abstract createEvent(createEventInput?: CreateEventInput): Event | Promise<Event>;
 
+    abstract updateEvent(updateEventInput?: UpdateEventInput): Event | Promise<Event>;
+
+    abstract deleteEvent(deleteEventInput?: number): Event | Promise<Event>;
+
     abstract createOrganization(createOrganizationInput?: CreateOrganizationInput): Organization | Promise<Organization>;
 
+    abstract updateOrganization(updateOrganizationInput?: UpdateOrganizationInput): Organization | Promise<Organization>;
+
+    abstract deleteOrganization(deleteOrganizationInput?: number): Organization | Promise<Organization>;
+
     abstract createStatistical(createStatisticalInput?: CreateStatisticalInput): Statistical | Promise<Statistical>;
+
+    abstract updateStatistical(updateStatisticalInput?: UpdateStatisticalInput): Statistical | Promise<Statistical>;
+
+    abstract deleteStatistical(deleteStatisticalInput?: number): Statistical | Promise<Statistical>;
 }
 
 export class Organization {
@@ -100,7 +137,7 @@ export class Statistical {
     cost?: number;
     numberOfParticipants?: number;
     revenue?: number;
-    note?: Date;
+    note?: string;
 }
 
 export abstract class ISubscription {

@@ -22,7 +22,7 @@ export class EventResolvers {
   @Query('event')
   async findOneById(
    
-    id: string,
+    id: number,
   ): Promise<Event> {
     return await this.eventService.findOneById(id);
   }
@@ -32,6 +32,18 @@ export class EventResolvers {
     const eventCreated = await this.eventService.create(args);
     pubSub.publish('eventCreated', { eventCreated: eventCreated });
     // return eventCreated;
+  }
+
+  @Mutation('updateEvent')
+  async update(@Args('updateEventInput') args){
+    const eventUpdated = await this.eventService.update(args);
+    
+  }
+
+  @Mutation('deleteEvent')
+  async delete(@Args('deleteEventInput') args){
+    const eventDeleted = await this.eventService.delete(args);
+    
   }
 
   @Subscription('eventCreated')

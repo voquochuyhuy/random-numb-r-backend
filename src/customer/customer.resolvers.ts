@@ -9,7 +9,7 @@ import {GqlAuthGuard} from "../auth/gqlAuth";
 import { CustomerEntity } from './customer.entity';
 const pubSub = new PubSub();
 
-// @UseGuards(GqlAuthGuard)
+@UseGuards(GqlAuthGuard)
 @Resolver('Customer')
 export class CustomerResolvers {
   constructor(private readonly customerService: CustomerService) {}

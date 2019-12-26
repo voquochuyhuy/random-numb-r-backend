@@ -5,6 +5,8 @@ type Query {
 
 type Mutation {
   createOrganization(createOrganizationInput: CreateOrganizationInput): Organization
+  updateOrganization(updateOrganizationInput: UpdateOrganizationInput) : Organization
+  deleteOrganization(deleteOrganizationInput : Int) : Organization
 }
 
 type Subscription {
@@ -19,6 +21,13 @@ type Organization {
 }
 
 input CreateOrganizationInput {
+  organizationName: String
+  place: String
+  hotline:String
+}
+
+input UpdateOrganizationInput {
+  id:Int
   organizationName: String
   place: String
   hotline:String

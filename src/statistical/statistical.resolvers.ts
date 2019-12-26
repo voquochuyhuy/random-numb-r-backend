@@ -20,17 +20,32 @@ export class StatisticalResolvers {
   @Query('statistical')
   async findOneById(
     @Args('id', ParseIntPipe)
-    id: string,
+    id: number,
   ) {
     return await this.statisticalService.findOneById(id);
   }
 
   @Mutation('createStatistical')
   async create(@Args('createStatisticalInput') args: CreateStatisticalDto) {
+
     const statisticalCreated = await this.statisticalService.create(args);
     pubSub.publish('statisticalCreated', { statisticalCreated: statisticalCreated });
     return statisticalCreated;
   }
+
+  @Mutation('updateStatistical')
+  async update(@Args('updateStatisticalInput') args){
+    const statisticalUpdated = await this.statisticalService.update(args);
+    return statisticalUpdated;
+  }
+
+  @Mutation('deleteStatistical')
+  async delete(@Args('deleteStatisticalInput') args){
+    console.log(args)
+    const statisticalUpdated = await this.statisticalService.delete(args);
+    return statisticalUpdated;
+  }
+
 
   @Subscription('StatisticalCreated')
   StatisticalCreated() {
