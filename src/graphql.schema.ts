@@ -6,13 +6,15 @@
 
 /* tslint:disable */
 export class CreateCustomerInput {
+    idNumber?: string;
     name?: string;
     phone?: string;
     birthday?: Date;
     adress?: string;
-    eventName?: string;
-    checkinTime?: Date;
+    job?: string;
+    email?: string;
     code?: string;
+    eventName?: string;
 }
 
 export class CreateEventInput {
@@ -64,13 +66,15 @@ export class UpdateStatisticalInput {
 
 export class Customer {
     id?: string;
+    idNumber?: string;
     name?: string;
     phone?: string;
     birthday?: Date;
     adress?: string;
-    eventName?: string;
-    checkinTime?: Date;
+    job?: string;
+    email?: string;
     code?: string;
+    eventName?: string;
 }
 
 export class Event {

@@ -16,21 +16,27 @@ type Subscription {
 type Customer {
   
     id: String
+    idNumber : String
     name: String
     phone: String
     birthday: Date
     adress: String 
+    job : String
+    email : String
+    code : String
     eventName: String
-    checkinTime: Date
-    code: String
+
 }
 
 input CreateCustomerInput {
+    idNumber : String
     name: String
     phone: String
     birthday: Date
     adress: String 
+    job : String
+    email : String
+    code : String
     eventName: String
-    checkinTime: Date
-    code: String
+    
 }

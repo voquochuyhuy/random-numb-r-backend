@@ -9,7 +9,6 @@ import {GqlAuthGuard} from "../auth/gqlAuth";
 import { CustomerEntity } from './customer.entity';
 const pubSub = new PubSub();
 
-@UseGuards(GqlAuthGuard)
 @Resolver('Customer')
 export class CustomerResolvers {
   constructor(private readonly customerService: CustomerService) {}
@@ -30,10 +29,10 @@ export class CustomerResolvers {
 
   @Query('getCustomerByEvent')
   async findByEvent(@Args('eventName') eventName:string):Promise<CustomerEntity[]>{
-    
+    // console.log(eventName)
     return  await this.customerService.findByEvent(eventName);
   }
-
+  @UseGuards(GqlAuthGuard)
   @Mutation('createCustomer')
   async create(@Args('createCustomerInput') args: CreateCustomerDto) {
     

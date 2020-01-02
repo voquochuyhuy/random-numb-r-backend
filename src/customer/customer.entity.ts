@@ -6,6 +6,10 @@ export class CustomerEntity {
     @PrimaryGeneratedColumn()
     id: string;
 
+
+    @Column()
+    idNumber: string;
+
     @Column()
     name: string;
 
@@ -19,11 +23,16 @@ export class CustomerEntity {
     adress: string;
 
     @Column()
-    eventName: string;
+    job: string;
 
     @Column()
-    checkinTime: Date;
+    email: string;
 
     @Column()
     code: string;
+
+    @Column()
+    eventName: string;
+
+
 }

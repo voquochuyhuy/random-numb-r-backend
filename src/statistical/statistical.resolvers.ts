@@ -1,4 +1,4 @@
-import { ParseIntPipe, UseGuards } from '@nestjs/common';
+import { ParseIntPipe, UseGuards , HttpException, HttpStatus} from '@nestjs/common';
 import { Args, Mutation, Query, Resolver, Subscription } from '@nestjs/graphql';
 import { PubSub } from 'graphql-subscriptions';
 import { Statistical } from '../graphql.schema';
@@ -27,7 +27,9 @@ export class StatisticalResolvers {
 
   @Mutation('createStatistical')
   async create(@Args('createStatisticalInput') args: CreateStatisticalDto) {
-
+    if(args.cost  === null || args.eventName === null ||  args.note === null ||  args.numberOfParticipants === null ||  args.revenue === null ){
+      throw new HttpException('Forbidden', HttpStatus.BAD_REQUEST);
+    }
     const statisticalCreated = await this.statisticalService.create(args);
     pubSub.publish('statisticalCreated', { statisticalCreated: statisticalCreated });
     return statisticalCreated;

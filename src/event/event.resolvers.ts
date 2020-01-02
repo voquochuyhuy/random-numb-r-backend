@@ -9,7 +9,6 @@ import { AuthGuard } from '@nestjs/passport';
 import {GqlAuthGuard} from "../auth/gqlAuth";
 const pubSub = new PubSub();
 
-@UseGuards(GqlAuthGuard)
 @Resolver('Event')
 export class EventResolvers {
   constructor(private readonly eventService: EventService) {}
@@ -27,6 +26,7 @@ export class EventResolvers {
     return await this.eventService.findOneById(id);
   }
 
+  @UseGuards(GqlAuthGuard)
   @Mutation('createEvent')
   async create(@Args('createEventInput') args: CreateEventDto) {
     const eventCreated = await this.eventService.create(args);
@@ -34,12 +34,14 @@ export class EventResolvers {
     // return eventCreated;
   }
 
+  @UseGuards(GqlAuthGuard)
   @Mutation('updateEvent')
   async update(@Args('updateEventInput') args){
     const eventUpdated = await this.eventService.update(args);
     
   }
-
+  
+  @UseGuards(GqlAuthGuard)
   @Mutation('deleteEvent')
   async delete(@Args('deleteEventInput') args){
     const eventDeleted = await this.eventService.delete(args);
